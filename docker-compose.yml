@@ -1,0 +1,17 @@
+services:
+  opencode:
+    image: ghcr.io/johanhansson/opencode-server:latest
+    ports:
+      - "4096:4096"
+    environment:
+      - ANTHROPIC_API_KEY=
+      - OPENCODE_SERVER_PASSWORD=
+    volumes:
+      - ./workspace:/workspace
+      - opencode-data:/root/.local/share/opencode
+      - opencode-config:/root/.config/opencode
+    restart: unless-stopped
+
+volumes:
+  opencode-data:
+  opencode-config:
